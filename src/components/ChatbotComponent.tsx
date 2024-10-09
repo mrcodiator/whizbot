@@ -53,10 +53,9 @@ export default function ChatbotWidget() {
     }
 
     return (
-        <div className="fixed bottom-0 right-0 z-40 p-4 sm:p-6 flex flex-col items-end">
-
+        <div className="fixed bottom-0 right-0 z-40 p-4 sm:p-6 flex flex-col items-end w-[450px] h-[700px] ">
             <div
-                className={`w-full sm:w-[400px] h-[70vh] sm:h-[600px] max-h-[calc(100vh-120px)] transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                className={`w-full h-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
                     }`}
             >
                 <div className="flex flex-col h-full bg-background border rounded-lg shadow-lg overflow-hidden">
@@ -68,7 +67,7 @@ export default function ChatbotWidget() {
                             {messages.map((message) => (
                                 <div
                                     key={message.id}
-                                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'
+                                    className={`flex text-sm ${message.sender === 'user' ? 'justify-end' : 'justify-start'
                                         }`}
                                 >
                                     <div
@@ -86,10 +85,10 @@ export default function ChatbotWidget() {
                     <div className="p-4 border-t">
                         <form
                             onSubmit={(e) => {
-                                e.preventDefault()
-                                handleSendMessage()
+                                e.preventDefault();
+                                handleSendMessage();
                             }}
-                            className="flex space-x-2"
+                            className="flex gap-2"
                         >
                             <Input
                                 type="text"
@@ -106,13 +105,17 @@ export default function ChatbotWidget() {
                     </div>
                 </div>
             </div>
-            <Button
-                onClick={() => setIsOpen(!isOpen)}
-                className="rounded-full w-12 h-12 p-0 shadow-lg mt-4"
-                aria-label={isOpen ? "Close chat" : "Open chat"}
-            >
-                {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
-            </Button>
+            <div>
+                <Button
+                    onClick={() => setIsOpen(!isOpen)}
+                    size={"icon"}
+                    className='h-14 w-14 rounded-full mt-4'
+                    aria-label={isOpen ? "Close chat" : "Open chat"}
+                >
+                    {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+                </Button>
+            </div>
         </div>
+
     )
 }
