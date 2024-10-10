@@ -4,7 +4,7 @@ import path from 'path';
 const nextConfig = {
     webpack: (config) => {
         config.output = {
-            path: path.resolve(__dirname, 'public'),
+            path: path.resolve(process.cwd(), 'src/app/public'),
             filename: 'chatbot.js',
         };
         return config;
