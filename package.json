@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "microbundle --no-compress --format iife --external react,react-dom next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
