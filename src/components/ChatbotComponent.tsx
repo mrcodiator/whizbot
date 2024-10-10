@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Send, MessageCircle } from "lucide-react"
-import { createRoot } from 'react-dom/client'
 
 export default function ChatbotComponent() {
     return (
@@ -50,18 +49,4 @@ export default function ChatbotComponent() {
             </Popover>
         </div>
     )
-}
-
-
-export const injectChatbot = () => {
-    const chatbotContainer = document.createElement('div')
-    chatbotContainer.id = 'chatbot-container'
-    document.body.appendChild(chatbotContainer)
-    const root = createRoot(chatbotContainer)
-    root.render(React.createElement(ChatbotComponent))
-}
-
-if (typeof window !== 'undefined') {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).injectChatbot = injectChatbot
 }
