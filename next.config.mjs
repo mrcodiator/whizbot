@@ -1,16 +1,18 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
+    reactStrictMode: true,
     async headers() {
         return [
             {
-                source: '/api/chatbot-widget.js',
+                source: '/chatbot-component.js',
                 headers: [
+                    { key: 'Content-Type', value: 'application/javascript' },
                     { key: 'Access-Control-Allow-Origin', value: '*' },
-                    { key: 'Access-Control-Allow-Methods', value: 'GET' },
                 ],
             },
         ]
     },
-};
+}
 
 export default nextConfig;

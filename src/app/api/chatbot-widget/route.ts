@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export async function GET() {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const jsContent = `
     (function() {
         function loadScript(url, callback) {
@@ -11,29 +11,20 @@ export async function GET() {
             document.head.appendChild(script);
         }
 
-        function loadStylesheet(url) {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = url;
-            document.head.appendChild(link);
-        }
-
-        loadStylesheet('${process.env.NEXT_PUBLIC_APP_URL}/styles/globals.css');
-
-        loadScript('https://unpkg.com/react@18/umd/react.production.min.js', function() {
-            loadScript('https://unpkg.com/react-dom@18/umd/react-dom.production.min.js', function() {
-                loadScript('${process.env.NEXT_PUBLIC_APP_URL}/chatbot-bundle.js', function() {
-                    window.injectChatbot();
+        loadScript('https://unpkg.com/react@17/umd/react.production.min.js', function() {
+            loadScript('https://unpkg.com/react-dom@17/umd/react-dom.production.min.js', function() {
+                loadScript('${process.env.NEXT_PUBLIC_APP_URL}/chatbot-component.js', function() {
+                    var chatbotContainer = document.createElement('div');
+                    chatbotContainer.id = 'chatbot-container';
+                    document.body.appendChild(chatbotContainer);
+                    ReactDOM.render(React.createElement(ChatbotComponent), chatbotContainer);
                 });
             });
         });
     })();
     `
 
-    return new NextResponse(jsContent, {
-        headers: {
-            'Content-Type': 'application/javascript',
-            'Access-Control-Allow-Origin': '*',
-        },
-    })
+    res.setHeader('Content-Type', 'application/javascript')
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.status(200).send(jsContent)
 }
