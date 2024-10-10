@@ -1,121 +1,67 @@
 'use client'
-import { useState, useEffect } from 'react'
-import { Send, MessageCircle, X } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
+import React from 'react'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Send, MessageCircle } from "lucide-react"
+import { createRoot } from 'react-dom/client'
 
-interface Message {
-    id: number
-    text: string
-    sender: 'user' | 'bot'
+export default function ChatbotComponent() {
+    return (
+        <div className='fixed bottom-4 right-4 sm:bottom-7 sm:right-7'>
+            <Popover>
+                <PopoverTrigger asChild>
+                    <Button size="icon" className='h-12 w-12 sm:h-14 sm:w-14 rounded-full'>
+                        <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </Button>
+                </PopoverTrigger>
+                <PopoverContent align='end' className='p-0 w-[90vw] sm:w-[400px] max-w-[400px]'>
+                    <Card className='h-[80vh] sm:h-[600px] flex flex-col rounded-lg overflow-hidden'>
+                        <CardHeader className='bg-primary text-primary-foreground'>
+                            <CardTitle>Welcome! ✊</CardTitle>
+                            <CardDescription className='text-primary-foreground/70'>We are here to help!</CardDescription>
+                        </CardHeader>
+
+                        <CardContent className='flex-1 py-6 bg-secondary overflow-y-auto'>
+                            <div className='flex flex-col gap-5 text-sm'>
+                                <div className='bg-primary text-primary-foreground p-3 rounded-lg w-fit max-w-[80%]'>
+                                    Hi! How can I help you?
+                                </div>
+
+                                <div className='bg-background text-foreground p-3 rounded-lg w-fit max-w-[80%] ml-auto'>
+                                    Hi! I need your help
+                                </div>
+                            </div>
+                        </CardContent>
+
+                        <CardFooter className='flex items-center gap-2 py-3 px-3'>
+                            <Input className='flex-1' placeholder='Type here...' />
+                            <Button size="icon">
+                                <Send className="h-4 w-4" />
+                            </Button>
+                        </CardFooter>
+                    </Card>
+                </PopoverContent>
+            </Popover>
+        </div>
+    )
 }
 
-export default function ChatbotWidget() {
-    const [isOpen, setIsOpen] = useState(false)
-    const [messages, setMessages] = useState<Message[]>([
-        { id: 1, text: "Hello! How can I help you today?", sender: 'bot' },
-    ])
-    const [inputMessage, setInputMessage] = useState('')
 
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = 'unset'
-        }
-        return () => {
-            document.body.style.overflow = 'unset'
-        }
-    }, [isOpen])
+export const injectChatbot = () => {
+    const chatbotContainer = document.createElement('div')
+    chatbotContainer.id = 'chatbot-container'
+    document.body.appendChild(chatbotContainer)
+    const root = createRoot(chatbotContainer)
+    root.render(React.createElement(ChatbotComponent))
+}
 
-    const handleSendMessage = () => {
-        if (inputMessage.trim() === '') return
-
-        const newMessage: Message = {
-            id: messages.length + 1,
-            text: inputMessage,
-            sender: 'user',
-        }
-
-        setMessages([...messages, newMessage])
-        setInputMessage('')
-
-        // Simulate bot response
-        setTimeout(() => {
-            const botResponse: Message = {
-                id: messages.length + 2,
-                text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
-                sender: 'bot',
-            }
-            setMessages(prevMessages => [...prevMessages, botResponse])
-        }, 1000)
-    }
-
-    return (
-        <div className="fixed bottom-0 right-0 z-40 p-4 sm:p-6 flex flex-col items-end w-[450px] h-[700px] ">
-            <div
-                className={`w-full h-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-                    }`}
-            >
-                <div className="flex flex-col h-full bg-background border rounded-lg shadow-lg overflow-hidden">
-                    <div className="bg-primary text-primary-foreground p-4">
-                        <h2 className="text-xl font-semibold">Chatbot</h2>
-                    </div>
-                    <ScrollArea className="flex-grow p-4">
-                        <div className="space-y-4">
-                            {messages.map((message) => (
-                                <div
-                                    key={message.id}
-                                    className={`flex text-sm ${message.sender === 'user' ? 'justify-end' : 'justify-start'
-                                        }`}
-                                >
-                                    <div
-                                        className={`max-w-[80%] p-3 rounded-lg ${message.sender === 'user'
-                                            ? 'bg-primary text-primary-foreground'
-                                            : 'bg-secondary text-secondary-foreground'
-                                            }`}
-                                    >
-                                        {message.text}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </ScrollArea>
-                    <div className="p-4 border-t">
-                        <form
-                            onSubmit={(e) => {
-                                e.preventDefault();
-                                handleSendMessage();
-                            }}
-                            className="flex gap-2"
-                        >
-                            <Input
-                                type="text"
-                                placeholder="Type your message..."
-                                value={inputMessage}
-                                onChange={(e) => setInputMessage(e.target.value)}
-                                className="flex-grow"
-                            />
-                            <Button type="submit" size="icon">
-                                <Send className="h-4 w-4" />
-                                <span className="sr-only">Send message</span>
-                            </Button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <Button
-                    onClick={() => setIsOpen(!isOpen)}
-                    size={"icon"}
-                    className='h-14 w-14 rounded-full mt-4'
-                    aria-label={isOpen ? "Close chat" : "Open chat"}
-                >
-                    {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
-                </Button>
-            </div>
-        </div>
-
-    )
+if (typeof window !== 'undefined') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).injectChatbot = injectChatbot
 }
