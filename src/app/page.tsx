@@ -1,7 +1,15 @@
-import ChatbotComponent from "@/components/ChatbotComponent";
+'use client';
 
-export default function Home() {
+import React from 'react';
+import useChatbotWebComponent from '@/components/ChatbotWebComponent';
+
+export default function ChatbotPage() {
+  useChatbotWebComponent();
+
   return (
-    <ChatbotComponent />
+    <div>
+      <h1>Chatbot Integration</h1>
+      <chat-bot></chat-bot> {/* Custom web component */}
+    </div>
   );
 }
