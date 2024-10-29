@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import { Button } from '../ui/button'
-import { ModeToggle } from '../ui/mode-toggle'
+// import { ModeToggle } from '../ui/mode-toggle'
 import ResponsiveNavbar from './ResponsiveNavbar'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
@@ -42,7 +42,7 @@ const Navbar = () => {
                 </div>
 
                 <div className='hidden lg:flex items-center gap-2'>
-                    <ModeToggle />
+                    {/* <ModeToggle /> */}
                     {user.isSignedIn ?
                         <Link href={"/dashboard"}>
                             <Button variant={"outline"} className=' rounded-full'>
@@ -61,7 +61,7 @@ const Navbar = () => {
                 </div>
 
                 <div className=' flex lg:hidden items-center gap-2'>
-                    <ModeToggle />
+                    {/* <ModeToggle /> */}
                     <ResponsiveNavbar />
                 </div>
             </div>

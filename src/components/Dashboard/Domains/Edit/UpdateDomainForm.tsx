@@ -17,12 +17,10 @@ import { useUpdateDomain } from "@/hooks/use-update-domain"
 import { IDomain } from "@/types/domain.types"
 import { useEffect } from "react"
 import Image from "next/image"
-import { useTheme } from "next-themes"
 
 
 const UpdateDomainForm = ({ domain }: { domain: IDomain }) => {
     const { form, loading, onSubmit, handleFileUpload, setLoading } = useUpdateDomain({ domainId: domain.id });
-    const { theme, systemTheme } = useTheme();
 
     useEffect(() => {
         form.reset({
@@ -113,7 +111,7 @@ const UpdateDomainForm = ({ domain }: { domain: IDomain }) => {
                                         <Input type='hidden' {...field} />
                                     </FormControl>
                                     <FileUploaderMinimal
-                                        classNameUploader={`${systemTheme === "dark" ? "uc-dark" : theme === "dark" ? "uc-dark" : "uc-light"}`}
+                                        classNameUploader={`${"uc-white uc-gray"}`}
                                         pubkey="9321ac2920b8db0ef8b3"
                                         multiple={false}
                                         imgOnly={true}

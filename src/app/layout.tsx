@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/contexts/theme-provider";
 import { Noto_Sans, Mukta } from "next/font/google"
 import {
   ClerkProvider,
@@ -55,15 +54,8 @@ export default function RootLayout({
         <body
           className={`${fontSans.variable} ${fontInter.variable} antialiased`}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
+          {children}
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

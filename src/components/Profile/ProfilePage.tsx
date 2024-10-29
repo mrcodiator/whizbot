@@ -6,7 +6,7 @@ import EditProfileForm from '@/components/Profile/EditProfileForm'
 import { Button } from '@/components/ui/button';
 import { IUser } from '@/types/auth.type'
 import { getUser } from '@/actions/user.actions'
-import ChangeAppearanceForm from './ChangeAppearanceForm'
+// import ChangeAppearanceForm from './ChangeAppearanceForm'
 
 const ProfilePage = async () => {
     const user = await getUser() as IUser;
@@ -24,7 +24,7 @@ const ProfilePage = async () => {
                 }
             />
             <EditProfileForm user={user} />
-            <ChangeAppearanceForm />
+            {/* <ChangeAppearanceForm /> */}
         </div >
     )
 }

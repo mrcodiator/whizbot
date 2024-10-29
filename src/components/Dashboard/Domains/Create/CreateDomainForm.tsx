@@ -62,7 +62,7 @@ const CreateDomainForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateA
                                 <Input type='hidden' {...field} />
                             </FormControl>
                             <FileUploaderMinimal
-                                classNameUploader={`${theme === "dark" || systemTheme === "dark" ? "uc-dark uc-gray" : "uc-light uc-gray"}`}
+                                classNameUploader={`${"uc-white uc-gray"}`}
                                 pubkey="9321ac2920b8db0ef8b3"
                                 multiple={false}
                                 imgOnly={true}

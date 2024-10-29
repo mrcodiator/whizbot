@@ -4,7 +4,7 @@ import React from 'react'
 import UserMenu from './UserMenu'
 import { IUser } from '@/types/auth.type'
 import ResponsiveSidebar from './ResponsiveSidebar'
-import { ModeToggle } from '@/components/ui/mode-toggle'
+// import { ModeToggle } from '@/components/ui/mode-toggle'
 import Link from 'next/link'
 
 const DashboardHeader = ({ user }: { user: IUser }) => {
@@ -19,7 +19,7 @@ const DashboardHeader = ({ user }: { user: IUser }) => {
                     </Button>
                 </Link>
 
-                <ModeToggle />
+                {/* <ModeToggle /> */}
                 <Button variant={"ghost"} size={"icon"}>
                     <Bell className='h-4 w-4' />
                 </Button>
