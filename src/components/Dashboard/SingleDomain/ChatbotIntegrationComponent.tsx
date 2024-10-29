@@ -77,7 +77,7 @@ const ChatbotIntegrationComponent = ({ id }: { id: string }) => {
 
     // Create iframe (initially hidden)
     var iframe = document.createElement('iframe');
-    iframe.src = 'http://localhost:3000/chatbot/${id}';
+    iframe.src = '${process.env.NEXT_PUBLIC_APP_URL}/chatbot/${id}';
     iframe.className = 'chat-iframe';
     document.body.appendChild(iframe);
 

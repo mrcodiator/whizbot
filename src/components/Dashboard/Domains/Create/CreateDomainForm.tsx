@@ -19,7 +19,7 @@ import { useTheme } from 'next-themes';
 
 const CreateDomainForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const { form, loading, onSubmit, handleFileUpload, setLoading } = useCreateDomain({ setOpen });
-    const { theme } = useTheme()
+    const { theme, systemTheme } = useTheme()
 
     return (
         <Form {...form}>
@@ -62,7 +62,7 @@ const CreateDomainForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateA
                                 <Input type='hidden' {...field} />
                             </FormControl>
                             <FileUploaderMinimal
-                                classNameUploader={`${theme === "dark" ? "uc-dark" : "uc-light"}`}
+                                classNameUploader={`${theme === "dark" ? "uc-dark" : systemTheme === "dark" ? "uc-dark" : "uc-light"}`}
                                 pubkey="9321ac2920b8db0ef8b3"
                                 multiple={false}
                                 imgOnly={true}
