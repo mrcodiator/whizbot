@@ -111,7 +111,7 @@ const UpdateDomainForm = ({ domain }: { domain: IDomain }) => {
                                         <Input type='hidden' {...field} />
                                     </FormControl>
                                     <FileUploaderMinimal
-                                        classNameUploader={`${"uc-white uc-gray"}`}
+                                        classNameUploader="uc-light uc-gray"
                                         pubkey="9321ac2920b8db0ef8b3"
                                         multiple={false}
                                         imgOnly={true}

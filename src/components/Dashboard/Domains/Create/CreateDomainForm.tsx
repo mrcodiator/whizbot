@@ -14,12 +14,10 @@ import {
 import { Input } from "@/components/ui/input";
 import '@uploadcare/react-uploader/core.css';
 import { useCreateDomain } from '@/hooks/use-create-domain';
-import { useTheme } from 'next-themes';
 
 
 const CreateDomainForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const { form, loading, onSubmit, handleFileUpload, setLoading } = useCreateDomain({ setOpen });
-    const { theme, systemTheme } = useTheme()
 
     return (
         <Form {...form}>
@@ -62,7 +60,7 @@ const CreateDomainForm = ({ setOpen }: { setOpen: React.Dispatch<React.SetStateA
                                 <Input type='hidden' {...field} />
                             </FormControl>
                             <FileUploaderMinimal
-                                classNameUploader={`${"uc-white uc-gray"}`}
+                                classNameUploader="uc-light uc-gray"
                                 pubkey="9321ac2920b8db0ef8b3"
                                 multiple={false}
                                 imgOnly={true}
