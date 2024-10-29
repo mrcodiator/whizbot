@@ -1,8 +1,5 @@
 import { getUser } from '@/actions/user.actions'
 import Navbar from '@/components/Header/Navbar'
-import { Button } from '@/components/ui/button'
-import { ArrowLeft } from 'lucide-react'
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import React from 'react'
 

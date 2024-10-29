@@ -1,10 +1,7 @@
 import React from 'react'
 import { Heading } from '../ui/heading'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
-import { CheckCircle, Mic, Video, X } from 'lucide-react'
+import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Avatar, AvatarFallback } from '../ui/avatar'
-import Image from 'next/image'
-import { Button } from '../ui/button'
 import { featuresData } from '@/helper/features-data'
 
 const FeaturesSection = () => {

@@ -16,6 +16,7 @@ const TestChatComponent = ({ domain }: { domain: IDomain }) => {
     const [isInitialLoading, setIsInitialLoading] = useState(true);
     const scrollRef = useRef<HTMLDivElement>(null);
     const [chatRoomId, setChatRoomId] = useState<string>('');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const channelRef = useRef<any>(null);
 
     const scrollToBottom = useCallback(() => {
@@ -53,9 +54,10 @@ const TestChatComponent = ({ domain }: { domain: IDomain }) => {
             console.log('Successfully subscribed to channel:', `chat-${roomId}`);
         });
 
-        channel.bind('pusher:subscription_error', (error: any) => {
+        channel.bind('pusher:subscription_error', (error: unknown) => {
             console.error('Subscription error:', error);
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scrollToBottom, isInitialLoading, isLoading]);
 
     const fetchChat = useCallback(async () => {
