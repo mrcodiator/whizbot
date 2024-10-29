@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { SignOutButton } from '@clerk/nextjs'
-import { LogOut } from 'lucide-react'
+import { Github, LogOut } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { usePathname, useRouter } from 'next/navigation'
@@ -33,6 +33,13 @@ const DashboardSidebar = ({ setOpen }: { setOpen?: React.Dispatch<React.SetState
             ))}
 
             <Separator />
+
+            <Link href={"https://github.com/mrcodiator/whizbot"} className='w-full'>
+                <Button variant={"ghost"} className='w-full justify-start'>
+                    <Github className='h-4 w-4 mr-2' />
+                    Github
+                </Button>
+            </Link>
 
             <SignOutButton signOutCallback={() => router.push("/")}>
                 <Button variant={"ghost"} className='w-full justify-start'>

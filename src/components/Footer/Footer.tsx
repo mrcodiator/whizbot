@@ -1,5 +1,7 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
+import { Github } from 'lucide-react'
 
 const Footer = () => {
     return (
@@ -10,9 +12,12 @@ const Footer = () => {
                 </p>
 
                 <div className='flex items-center gap-2'>
-                    <Button variant={"ghost"}>
-                        Priacy Policy
-                    </Button>
+                    <Link href={"https://github.com/mrcodiator/whizbot"}>
+                        <Button variant={"ghost"}>
+                            <Github className='h-4 w-4 mr-2' />
+                            Github
+                        </Button>
+                    </Link>
 
                     <Button variant={"ghost"}>
                         Terms of Service
