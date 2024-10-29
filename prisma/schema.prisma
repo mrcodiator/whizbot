@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  firstName    String
+  lastName     String
+  clerkId      String        @unique
+  email        String        @unique
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  Domain       Domain[]
+  Subscription Subscription?
+}
+
+model Domain {
+  id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name      String
+  url       String     @unique
+  email     String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String     @db.Uuid
+  logo      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Chatbot   Chatbot?
+  Customer  Customer[]
+}
+
+model Chatbot {
+  id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Domain    Domain     @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  domainId  String     @unique @db.Uuid
+  trainData String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  ChatRoom  ChatRoom[]
+}
+
+model Customer {
+  id        String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email     String?    @unique
+  domainId  String     @db.Uuid
+  Domain    Domain     @relation(fields: [domainId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  ChatRoom  ChatRoom[]
+}
+
+model ChatRoom {
+  id          String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  customerId  String        @db.Uuid
+  Customer    Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  chatbotId   String        @db.Uuid
+  Chatbot     Chatbot       @relation(fields: [chatbotId], references: [id], onDelete: Cascade)
+  chatMessage ChatMessage[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@unique([customerId, chatbotId])
+}
+
+model ChatMessage {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  content    String
+  role       String
+  createdAt  DateTime @default(now())
+  chatRoomId String   @db.Uuid
+  ChatRoom   ChatRoom @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
+}
+
+model Subscription {
+  id                   String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId               String   @unique @db.Uuid
+  User                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeCustomerId     String
+  stripeSubscriptionId String   @unique
+  plan                 Plan     @default(PRO)
+  interval             String
+  expiresAt            DateTime
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+enum Plan {
+  PRO
+}
