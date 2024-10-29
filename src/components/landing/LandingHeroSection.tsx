@@ -2,7 +2,8 @@ import React from 'react';
 import { Heading } from '@/components/ui/heading';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, PlayCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import DemoVideoComponent from './DemoVideoComponent';
 
 export default function LandingHeroSection() {
     return (
@@ -23,10 +24,7 @@ export default function LandingHeroSection() {
                         </Button>
                     </Link>
 
-                    <Button variant="outline" size="lg" className='w-full sm:w-auto rounded-full'>
-                        <PlayCircle className='w-5 h-5 mr-2' />
-                        Watch Demo
-                    </Button>
+                    <DemoVideoComponent />
                 </div>
 
                 <p className='flex items-center justify-center lg:justify-start text-muted-foreground text-xs sm:text-sm mt-4'>
