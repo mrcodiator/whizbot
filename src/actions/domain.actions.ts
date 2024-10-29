@@ -58,10 +58,22 @@ export async function createDomain(data: ICreateDomain) {
             }
         })
 
-        if (userDomains.length >= 2 && (!user.Subscription || user.Subscription?.expiresAt && user.Subscription.expiresAt >= new Date())) {
+        if (
+            userDomains.length >= 2 &&
+            (!user.Subscription ||
+                (user.Subscription?.expiresAt &&
+                    new Date(user.Subscription.expiresAt as Date).setHours(0, 0, 0, 0) <= new Date().setHours(0, 0, 0, 0)))
+        ) {
             // check subs
-            return sendResponse(errorMessages.DOMAIN_LIMIT_REACHED, null)
+            console.log(
+                new Date(user.Subscription?.expiresAt as Date).setHours(0, 0, 0, 0),
+                new Date().setHours(0, 0, 0, 0)
+            );
+
+            return sendResponse(errorMessages.DOMAIN_LIMIT_REACHED, null);
         }
+
+
 
         const domain = await db.domain.create({
             data: {
