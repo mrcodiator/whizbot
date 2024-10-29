@@ -7,6 +7,7 @@ import moment from 'moment';
 import { addNewMessage, createChatRoom, getChatRoom } from '@/actions/chat.actions';
 import { pusherClient } from '@/lib/pusher';
 import { Button } from '../ui/button';
+import { IChatRoom } from '@/types/chat.type';
 
 
 const TestChatComponent = ({ domain }: { domain: IDomain }) => {
@@ -69,7 +70,8 @@ const TestChatComponent = ({ domain }: { domain: IDomain }) => {
                 console.log('Chat room response:', res);
 
                 if (res.success) {
-                    setMessages(res.data.chatMessage);
+                    const { chatMessage } = res.data as IChatRoom;
+                    setMessages(chatMessage);
                     setChatRoomId(storedChatRoomId);
                     setupPusherSubscription(storedChatRoomId);
                 } else {
@@ -108,8 +110,9 @@ const TestChatComponent = ({ domain }: { domain: IDomain }) => {
             let updatedChatRoomId = chatRoomId;
             if (!updatedChatRoomId) {
                 const res = await createChatRoom(domain.Chatbot.id, domain.id);
-                if (res.success) {
-                    updatedChatRoomId = res.data.id;
+                if (res.success && res.data) {
+                    const data = res.data as IChatRoom;
+                    updatedChatRoomId = data?.id as string;
                     setChatRoomId(updatedChatRoomId);
                     window.localStorage.setItem('chatRoomId', updatedChatRoomId);
                     setupPusherSubscription(updatedChatRoomId);

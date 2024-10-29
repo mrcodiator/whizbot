@@ -1,5 +1,6 @@
 import { Chatbot } from "@prisma/client";
 import { Domain } from "domain";
+import { IChatMessage } from "./domain.types";
 
 export interface Customer {
     id: string;
@@ -17,7 +18,7 @@ export interface IChatRoom {
     Customer: Customer;
     chatbotId: string;
     Chatbot?: Chatbot;
-    chatMessage: ChatMessage[];
+    chatMessage: IChatMessage[];
     createdAt: Date;
     updatedAt: Date;
 }
