@@ -1,11 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ["ucarecdn.com"],
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "**",
+                hostname: "ucarecdn.com",  // Specify the domain here instead of using "domains"
+                pathname: "/**",           // Allow all paths for this domain
+            },
+            {
+                protocol: "https",
+                hostname: "**",             // Wildcard to allow all HTTPS domains if needed
             },
         ],
         dangerouslyAllowSVG: true,
