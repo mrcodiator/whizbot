@@ -23,9 +23,9 @@ const SignInForm = () => {
     return (
         <Card className=" w-full">
             <CardHeader className=" text-center mb-10">
-                <Heading variant={"h3"} className="  font-semibold">Join Whizbot</Heading>
+                <Heading variant={"h3"} className="  font-semibold">Welcome Back! ✌️</Heading>
                 <CardDescription>
-                    Get started with Whizbot by starting your free trial now.
+                    We&apos;re so excited to see you again!
                 </CardDescription>
             </CardHeader>
 
