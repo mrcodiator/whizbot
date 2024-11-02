@@ -21,7 +21,7 @@ const UserMenu = ({ user }: { user: IUser }) => {
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Avatar className='h-8 w-8 cursor-pointer'>
-                        <AvatarFallback className='bg-primary text-muted capitalize'>{user.firstName[0]}</AvatarFallback>
+                        <AvatarFallback className='bg-primary text-muted capitalize'>{user?.firstName[0]}</AvatarFallback>
                     </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align='end' className='w-[10rem]' >

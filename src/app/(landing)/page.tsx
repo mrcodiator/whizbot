@@ -3,7 +3,9 @@ import React from 'react'
 import LandingHeroSection from '@/components/landing/LandingHeroSection'
 import FeaturesSection from '@/components/landing/FeaturesSection'
 import PricingTable from '@/components/Pricing/PricingTable'
-import Footer from '@/components/Footer/Footer'
+import WorkShowCaseSection from '@/components/landing/WorkShowCaseSection'
+import FooterSection from '@/components/Footer/FooterSection'
+// import TestimonialSection from '@/components/landing/TestimonialSection'
 
 const page = () => {
     return (
@@ -15,8 +17,10 @@ const page = () => {
                 </div>
             </div>
             <FeaturesSection />
+            <WorkShowCaseSection />
             <PricingTable />
-            <Footer />
+            {/* <TestimonialSection /> */}
+            <FooterSection />
         </div>
     )
 }

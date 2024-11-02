@@ -31,18 +31,26 @@ const PricingTable = () => {
                 </div>
             </div>
 
-            <div className='max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mt-12'>
+            <div className='max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mt-12'>
                 {planData.map((data, index) => (
-                    <Card key={index} className={`border flex flex-col ${index === 1 ? "ring-1 ring-slate-900/40 ring-offset-2" : ""}`}>
-                        <CardHeader className='flex flex-col gap-2'>
-                            <Heading variant={"h4"}>{data.title}</Heading>
-                            <CardDescription>{data.description}</CardDescription>
+                    <Card key={index} className={`border flex flex-col ${index === 1 ? " border-primary/50" : ""}`}>
+                        <CardHeader className='flex flex-col gap-5'>
+                            <div>
+                                <Heading variant={"h4"}>{data.title}</Heading>
+                                <CardDescription>{data.description}</CardDescription>
+                            </div>
                             <div>
                                 <Heading variant={"h3"} className='font-bold'>
                                     ${isYearly ? data.yearPrice : data.monthPrice}
                                     <span className='text-sm'>/{isYearly ? "year" : "month"}</span>
                                 </Heading>
                             </div>
+
+                            <Link href={"/dashboard/billing"} className=' w-full'>
+                                <Button size={"lg"} variant={data.title === "Starter" ? "secondary" : "default"} className='w-full'>
+                                    Get started <ArrowRightCircle className='ml-2 h-4 w-4' />
+                                </Button>
+                            </Link>
                             <Separator />
                         </CardHeader>
                         <CardContent className='flex-1 flex flex-col gap-2 p-6'>
@@ -56,11 +64,7 @@ const PricingTable = () => {
                             </ul>
                         </CardContent>
                         <CardFooter>
-                            <Link href={"/dashboard/billing"} className=' w-full'>
-                                <Button size={"lg"} variant={data.title === "Starter" ? "secondary" : "default"} className='w-full'>
-                                    Get started <ArrowRightCircle className='ml-2 h-4 w-4' />
-                                </Button>
-                            </Link>
+
                         </CardFooter>
                     </Card>
                 ))}

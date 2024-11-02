@@ -1,4 +1,4 @@
-import { Mail, MessageSquare, Smile, BarChart2, Settings, Headphones } from "lucide-react";
+import { Mail, MessageSquare, BarChart2, Settings } from "lucide-react";
 
 export const featuresData = [
     {
@@ -11,11 +11,11 @@ export const featuresData = [
         title: "Automated Email Responses",
         description: "Send personalized follow-up emails instantly using AI automation to keep your customers in the loop."
     },
-    {
-        icon: <Smile className="h-6 w-6" />,
-        title: "24/7 Availability",
-        description: "Never miss a customer inquiry again with 24/7 chatbot availability to handle all support queries."
-    },
+    // {
+    //     icon: <Smile className="h-6 w-6" />,
+    //     title: "24/7 Availability",
+    //     description: "Never miss a customer inquiry again with 24/7 chatbot availability to handle all support queries."
+    // },
     {
         icon: <BarChart2 className="h-6 w-6" />,
         title: "Analytics & Insights",
@@ -26,9 +26,9 @@ export const featuresData = [
         title: "Customizable Workflows",
         description: "Tailor the chatbot to your business needs with fully customizable conversation flows and integrations."
     },
-    {
-        icon: <Headphones className="h-6 w-6" />,
-        title: "Seamless Handoff",
-        description: "Easily transition from bot to live agents when needed, ensuring a smooth customer support experience."
-    }
+    // {
+    //     icon: <Headphones className="h-6 w-6" />,
+    //     title: "Seamless Handoff",
+    //     description: "Easily transition from bot to live agents when needed, ensuring a smooth customer support experience."
+    // }
 ];

@@ -1,4 +1,4 @@
-import Footer from '@/components/Footer/Footer'
+import FooterSection from '@/components/Footer/FooterSection'
 import Navbar from '@/components/Header/Navbar'
 import { Heading } from '@/components/ui/heading'
 import React from 'react'
@@ -15,7 +15,7 @@ const NotFound = () => {
                 </p>
             </div>
 
-            <Footer />
+            <FooterSection />
         </div>
     )
 }

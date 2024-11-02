@@ -15,10 +15,11 @@ const DemoVideoComponent = () => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button size={"lg"} variant={"outline"} className=' rounded-full'>
-                    <Play className='h-4 w-4 mr-2' />
-                    Watch Video
-                </Button>
+                <div className='bg-slate-600/80 drop-shadow-lg rounded-full p-2 animate-bounce'>
+                    <Button size={"icon"} className=' h-16 w-16 rounded-full'>
+                        <Play className='h-6 w-6 ' />
+                    </Button>
+                </div>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
