@@ -11,9 +11,10 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { ArrowRight, Loader2 } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Loader2 } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "../ui/card"
 import { useRegisterHook } from "@/hooks/use-sign-up"
+import { Heading } from "../ui/heading"
 
 
 
@@ -21,13 +22,14 @@ const SignUpForm = () => {
     const { form, onSubmit, loading } = useRegisterHook();
 
     return (
-        <Card className=" w-full border">
-            <CardHeader>
-                <CardTitle>Setup Password</CardTitle>
+        <Card className=" w-full">
+            <CardHeader className=" text-center mb-10">
+                <Heading variant={"h3"} className="  font-semibold">Setup Password</Heading>
                 <CardDescription>
-                    We use clerk for secure authentication.
+                    Create a password to unlock your account.
                 </CardDescription>
             </CardHeader>
+
             <CardContent>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -40,7 +42,7 @@ const SignUpForm = () => {
                                     <FormLabel>Password</FormLabel>
 
                                     <FormControl>
-                                        <Input type="password" placeholder="password" {...field} />
+                                        <Input className=" h-10" type="password" placeholder="password" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -55,7 +57,7 @@ const SignUpForm = () => {
                                     <FormLabel>Confirm Password</FormLabel>
 
                                     <FormControl>
-                                        <Input type="password" placeholder="confirm password" {...field} />
+                                        <Input className=" h-10" type="password" placeholder="confirm password" {...field} />
                                     </FormControl>
                                     <FormDescription>
                                         Enter the same password as before, for verification.
@@ -64,14 +66,14 @@ const SignUpForm = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full mt-6" type="submit" disabled={loading}>
+                        <Button size={"lg"} className="w-full mt-6" type="submit" disabled={loading}>
                             {loading ?
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> wait...
                                 </>
                                 :
                                 <>
-                                    Sign Up <ArrowRight className="h-4 w-4 ml-2" />
+                                    Sign Up
                                 </>
                             }
                         </Button>
@@ -80,10 +82,10 @@ const SignUpForm = () => {
             </CardContent>
 
             <CardFooter className=" w-full">
-                <div className=" mx-auto text-muted-foreground">
+                <div className=" mx-auto text-sm text-muted-foreground">
                     Already have an account?
                     <Link href="/sign-in">
-                        <Button variant={"link"} className=" font-bold">Sign In</Button>
+                        <Button variant={"link"}>Sign In</Button>
                     </Link>
                 </div>
             </CardFooter>

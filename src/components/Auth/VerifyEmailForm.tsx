@@ -1,12 +1,11 @@
 "use client"
 
 import React from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
 import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -15,6 +14,7 @@ import {
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'
 import { useVerification } from '@/hooks/use-verification'
 import { Loader2 } from 'lucide-react'
+import { Heading } from '../ui/heading'
 
 
 const VerifyEmailForm = () => {
@@ -23,13 +23,11 @@ const VerifyEmailForm = () => {
 
     return (
 
-        <Card className=' border w-full'>
-            <CardHeader>
-                <CardTitle>
-                    Please Enter Your Code
-                </CardTitle>
+        <Card className=' w-full'>
+            <CardHeader className=" text-center mb-10">
+                <Heading variant={"h3"} className="  font-semibold">Verify Email</Heading>
                 <CardDescription>
-                    We will send you an email to reset your password.
+                    Enter the code that was sent to your email.
                 </CardDescription>
             </CardHeader>
 
@@ -63,14 +61,11 @@ const VerifyEmailForm = () => {
                                             </InputOTPGroup>
                                         </InputOTP>
                                     </FormControl>
-                                    <FormDescription>
-                                        Check your email for the code.
-                                    </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full mt-6" type="submit" disabled={loading}>
+                        <Button size={"lg"} className="w-full mt-6" type="submit" disabled={loading}>
                             {loading ?
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> wait...

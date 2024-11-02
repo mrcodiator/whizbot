@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card'
 import { Button } from "@/components/ui/button"
 import {
     Form,
@@ -15,21 +15,22 @@ import {
 import { Input } from '@/components/ui/input'
 import { useForgotPassword } from '@/hooks/use-forgot-password'
 import { Loader2 } from 'lucide-react'
+import { Heading } from '@/components/ui/heading'
 
 const SetNewPasswordForm = () => {
     const { form, forgotPassword: onSubmit, loading } = useForgotPassword()
 
 
     return (
-        <Card className=' border w-full'>
-            <CardHeader>
-                <CardTitle >
-                    Set New Password
-                </CardTitle>
+        <Card className=' w-full'>
+
+            <CardHeader className=" text-center mb-10">
+                <Heading variant={"h3"} className="  font-semibold">Set New Password</Heading>
                 <CardDescription>
-                    Now you can login with your new password.
+                    Create a new password for your account.
                 </CardDescription>
             </CardHeader>
+
             <CardContent>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -40,11 +41,8 @@ const SetNewPasswordForm = () => {
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
-                                        <Input type='password' placeholder="Password" {...field} />
+                                        <Input className=' h-10' type='password' placeholder="Password" {...field} />
                                     </FormControl>
-                                    <FormDescription>
-                                        Please enter your new password.
-                                    </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -57,7 +55,7 @@ const SetNewPasswordForm = () => {
                                 <FormItem>
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
-                                        <Input type='password' placeholder="Password" {...field} />
+                                        <Input className=' h-10' type='password' placeholder="Password" {...field} />
                                     </FormControl>
                                     <FormDescription>
                                         Please confirm your new password.
@@ -66,7 +64,7 @@ const SetNewPasswordForm = () => {
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full mt-6" type="submit" disabled={loading}>
+                        <Button size={"lg"} className="w-full mt-6" type="submit" disabled={loading}>
                             {loading ?
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> wait...

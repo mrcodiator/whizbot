@@ -9,7 +9,7 @@ const SignUpComponent = () => {
     const { step } = useAuthContext();
     return (
         <div className=' h-full w-full flex flex-col gap-10'>
-
+            {/* 
             <div>
                 <div className='mb-2 text-sm font-medium'>
                     Step {step + 1} out of 3.
@@ -20,7 +20,7 @@ const SignUpComponent = () => {
                         <div key={index} className={`p-1 w-full rounded-full  ${index === step ? "bg-primary" : "bg-primary/10"}`}></div>
                     ))}
                 </div>
-            </div>
+            </div> */}
 
             <div className=' my-auto'>
                 {step === 0 ?

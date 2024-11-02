@@ -11,20 +11,21 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { ArrowRight, Loader2 } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Loader2 } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "../ui/card"
 import { useLoginHook } from "@/hooks/use-login"
+import { Heading } from "../ui/heading"
 
 
 const SignInForm = () => {
     const { form, onSubmit, loading } = useLoginHook()
 
     return (
-        <Card className=" w-full border">
-            <CardHeader>
-                <CardTitle>Sign In To Your Account</CardTitle>
+        <Card className=" w-full">
+            <CardHeader className=" text-center mb-10">
+                <Heading variant={"h3"} className="  font-semibold">Join Whizbot</Heading>
                 <CardDescription>
-                    Welcome back! Please enter your details.
+                    Get started with Whizbot by starting your free trial now.
                 </CardDescription>
             </CardHeader>
 
@@ -39,7 +40,7 @@ const SignInForm = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="email" {...field} />
+                                        <Input className=" h-10" placeholder="email" {...field} />
                                     </FormControl>
                                     <FormDescription>
                                         We&apos;ll never share your email.
@@ -64,7 +65,7 @@ const SignInForm = () => {
                                         </Link>
                                     </div>
                                     <FormControl>
-                                        <Input type="password" placeholder="password" {...field} />
+                                        <Input className=" h-10" type="password" placeholder="password" {...field} />
                                     </FormControl>
                                     <FormDescription>
                                         Enter a password of at least 6 characters.
@@ -74,14 +75,14 @@ const SignInForm = () => {
                             )}
                         />
 
-                        <Button className="w-full mt-6" type="submit" disabled={loading}>
+                        <Button size={"lg"} className="w-full mt-6" type="submit" disabled={loading}>
                             {loading ?
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> wait...
                                 </>
                                 :
                                 <>
-                                    Sign In <ArrowRight className="h-4 w-4 ml-2" />
+                                    Login
                                 </>
                             }
                         </Button>
@@ -91,7 +92,7 @@ const SignInForm = () => {
             </CardContent>
 
             <CardFooter className=" w-full text-center text-muted-foreground">
-                <div className=" text-sm md:text-base mx-auto">
+                <div className=" text-sm mx-auto">
                     Don&apos;t have an account? &nbsp;
                     <Link href="/sign-up">
                         <Button variant={"link"} >Sign Up</Button>

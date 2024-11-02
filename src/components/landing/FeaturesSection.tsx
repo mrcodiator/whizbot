@@ -1,29 +1,29 @@
-'use client'
-import React, { useState, useEffect } from 'react'
+// 'use client'
+// import React, { useState, useEffect } from 'react'
 import { Heading } from '../ui/heading'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Avatar, AvatarFallback } from '../ui/avatar'
 import { featuresData } from '@/helper/features-data'
 import Image from 'next/image'
-import { Check, Star, Shield, Globe } from 'lucide-react'
+// import { Check, Star, Shield, Globe } from 'lucide-react'
 
-const notifications = [
-    { message: "Easy to use", icon: <Check />, color: "bg-primary" },
-    { message: "Seamless Integration", icon: <Star />, color: "bg-secondary" },
-    { message: "Real-time Analytics", icon: <Globe />, color: "bg-accent" },
-    { message: "Customizable Settings", icon: <Shield />, color: "bg-primary" },
-    { message: "24/7 Support", icon: <Check />, color: "bg-secondary" },
-]
+// const notifications = [
+//     { message: "Easy to use", icon: <Check />, color: "bg-primary" },
+//     { message: "Seamless Integration", icon: <Star />, color: "bg-secondary" },
+//     { message: "Real-time Analytics", icon: <Globe />, color: "bg-accent" },
+//     { message: "Customizable Settings", icon: <Shield />, color: "bg-primary" },
+//     { message: "24/7 Support", icon: <Check />, color: "bg-secondary" },
+// ]
 
 const FeaturesSection = () => {
-    const [currentNotification, setCurrentNotification] = useState(0)
+    // const [currentNotification, setCurrentNotification] = useState(0)
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentNotification((prev) => (prev + 1) % notifications.length)
-        }, 3000) // Change notification every 3 seconds
-        return () => clearInterval(interval)
-    }, [])
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCurrentNotification((prev) => (prev + 1) % notifications.length)
+    //     }, 3000) // Change notification every 3 seconds
+    //     return () => clearInterval(interval)
+    // }, [])
 
     return (
         <div className='container mx-auto py-20 p-5'>
@@ -71,7 +71,7 @@ const FeaturesSection = () => {
                         className='w-full h-full object-cover rounded-xl'
                     />
 
-                    <div className='absolute top-5 right-5 flex items-center justify-center'>
+                    {/* <div className='absolute top-5 right-5 flex items-center justify-center'>
                         <div className='notification-stack'>
                             {notifications.map((notification, index) => {
                                 const position = (index - currentNotification + notifications.length) % notifications.length
@@ -116,7 +116,8 @@ const FeaturesSection = () => {
                                 )
                             })}
                         </div>
-                    </div>
+                    </div> */}
+
                 </div>
 
             </div>

@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -12,12 +11,13 @@ import {
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { ArrowRight, Loader2 } from "lucide-react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "../ui/card"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { useAuthContext } from "@/contexts/AuthContext"
+import { Heading } from "../ui/heading"
 
 const onboardingSchema = z.object({
     firstName: z
@@ -59,11 +59,11 @@ const OnboardingForm = () => {
 
 
     return (
-        <Card className=" w-full border">
-            <CardHeader>
-                <CardTitle>Create An Account</CardTitle>
+        <Card className=" w-full">
+            <CardHeader className=" text-center mb-10">
+                <Heading variant={"h3"} className="  font-semibold">Join Whizbot</Heading>
                 <CardDescription>
-                    Boost your business with AI features by Whizbot.
+                    Get started with Whizbot by starting your free trial now.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -77,7 +77,7 @@ const OnboardingForm = () => {
                                     <FormItem>
                                         <FormLabel>First Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="John" {...field} />
+                                            <Input className=" h-10" placeholder="John" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -91,7 +91,7 @@ const OnboardingForm = () => {
                                     <FormItem>
                                         <FormLabel>Last Name</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Doe" {...field} />
+                                            <Input className=" h-10" placeholder="Doe" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -106,17 +106,14 @@ const OnboardingForm = () => {
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="email" {...field} />
+                                        <Input className=" h-10" placeholder="example@me.com" {...field} />
                                     </FormControl>
-                                    <FormDescription>
-                                        We&apos;ll never share your email.
-                                    </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
 
-                        <Button className="w-full mt-6" type="submit" disabled={loading}>
+                        <Button size={"lg"} className="w-full mt-6" type="submit" disabled={loading}>
                             {loading ?
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" /> wait...
@@ -132,7 +129,7 @@ const OnboardingForm = () => {
             </CardContent>
 
             <CardFooter className=" w-full">
-                <div className=" text-sm md:text-base mx-auto text-muted-foreground">
+                <div className=" text-sm mx-auto text-muted-foreground">
                     Already have an account?
                     <Link href="/sign-in">
                         <Button variant={"link"}>Sign In</Button>
