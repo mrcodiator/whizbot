@@ -1,9 +1,7 @@
-import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
-import { Facebook, Github, Send, Twitter } from 'lucide-react'
+import { Facebook, Github, Twitter } from 'lucide-react'
 import Link from 'next/link'
-import { Input } from '../ui/input'
 
 const FooterSection = () => {
     return (

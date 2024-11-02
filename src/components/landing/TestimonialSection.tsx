@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Card, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardHeader } from '../ui/card';
 import { clientData } from '@/helper/client-data';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
