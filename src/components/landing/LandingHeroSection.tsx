@@ -40,14 +40,13 @@ export default function LandingHeroSection() {
                         src="/images/ui/hero.png"
                         alt="WhizBot AI dashboard"
                         sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
-                        width={768}
-                        height={550}
+                        width={100}
+                        height={100}
                         className="w-full h-auto rounded-lg"
                         blurDataURL="URL"
                         placeholder="blur"
-                        quality={75}
-                        priority={true}
-                        loading="eager"
+                        quality={90}
+                        priority
                     />
                 </div>
 
