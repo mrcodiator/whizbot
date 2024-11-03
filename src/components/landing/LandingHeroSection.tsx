@@ -37,7 +37,7 @@ export default function LandingHeroSection() {
             <div className=' relative max-w-7xl w-full mx-auto mt-20 rounded-2xl overflow-hidden '>
                 <div className=' p-5 bg-gradient-to-t from-transparent via-slate-400 to-secondary'>
                     <Image
-                        src="/images/ui/hero-mobile.png"
+                        src="/images/ui/hero.png"
                         alt="WhizBot AI dashboard"
                         sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
                         width={768}
