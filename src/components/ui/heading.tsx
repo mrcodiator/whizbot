@@ -1,9 +1,9 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 const headingVariants = cva(
-    "font-medium font-sans leading-tight tracking-tight", // Base class for all headings
+    "font-medium font-sans leading-tight tracking-tight",
     {
         variants: {
             variant: {
@@ -25,17 +25,17 @@ const headingVariants = cva(
             color: "default",
         },
     }
-)
+);
 
 export interface HeadingProps
     extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "color">,
     VariantProps<typeof headingVariants> { }
 
 function Heading({ className, variant, color, ...props }: HeadingProps) {
-    const Tag = variant || "h1" // Dynamically set the heading tag (h1, h2, etc.)
+    const Tag = variant || "h1"; // Dynamically set the heading tag (h1, h2, etc.)
     return (
         <Tag className={cn(headingVariants({ variant, color }), className)} {...props} />
-    )
+    );
 }
 
-export { Heading, headingVariants }
+export { Heading, headingVariants };

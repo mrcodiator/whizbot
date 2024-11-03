@@ -1,19 +1,20 @@
 /** @type {import('next').NextConfig} */
+
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
 const nextConfig = {
     images: {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "ucarecdn.com",  // Specify the domain here instead of using "domains"
-                pathname: "/**",           // Allow all paths for this domain
+                hostname: "ucarecdn.com",
+                pathname: "/**",
             },
             {
                 protocol: "https",
-                hostname: "**",             // Wildcard to allow all HTTPS domains if needed
+                hostname: "**",
             },
         ],
-        dangerouslyAllowSVG: true,
-        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     },
     async headers() {
         return [
@@ -32,17 +33,12 @@ const nextConfig = {
             },
         ]
     },
-    images: {
-        domains: ["ucarecdn.com"],
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "**",
-            },
-        ],
-        dangerouslyAllowSVG: true,
-        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    }
 };
 
-export default nextConfig;
+const withAnalyzer = withBundleAnalyzer({
+    enabled: process.env.ANALYZE === 'true',
+});
+
+// Export the combined config
+export default withAnalyzer(nextConfig);
+

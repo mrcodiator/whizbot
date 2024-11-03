@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { Heading } from '../ui/heading';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader } from '../ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { ArrowRightCircle, CheckCircle } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Separator } from '../ui/separator';
@@ -27,7 +27,7 @@ const PricingTable = () => {
             <div className='mx-auto text-center mt-5'>
                 <div className="flex items-center gap-2">
                     <Label htmlFor="is-yearly">Yearly Plan</Label>
-                    <Switch id="is-yearly" checked={isYearly} onCheckedChange={toggleYearly} />
+                    <Switch id="is-yearly" aria-label='Yearly Plan' checked={isYearly} onCheckedChange={toggleYearly} />
                 </div>
             </div>
 
@@ -36,7 +36,7 @@ const PricingTable = () => {
                     <Card key={index} className={`border flex flex-col ${index === 1 ? " border-primary/50" : ""}`}>
                         <CardHeader className='flex flex-col gap-5'>
                             <div>
-                                <Heading variant={"h4"}>{data.title}</Heading>
+                                <CardTitle>{data.title}</CardTitle>
                                 <CardDescription>{data.description}</CardDescription>
                             </div>
                             <div>

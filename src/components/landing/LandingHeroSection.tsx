@@ -37,12 +37,16 @@ export default function LandingHeroSection() {
             <div className=' relative max-w-7xl w-full mx-auto mt-20 rounded-2xl overflow-hidden '>
                 <div className=' p-5 bg-gradient-to-t from-transparent via-slate-400 to-secondary'>
                     <Image
-                        src="/images/ui/home.png"
-                        alt="WhizBot"
-                        sizes='100vh'
-                        width={0}
-                        height={0}
-                        className="w-full h-auto object-cover rounded-lg"
+                        src="/images/ui/hero.png"
+                        alt="hero"
+                        sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
+                        height={100}
+                        width={100}
+                        className=" max-w-7xl h-auto w-full rounded-lg"
+                        blurDataURL="URL"
+                        placeholder="blur"
+                        quality={90}
+                        priority
                     />
                 </div>
 
@@ -50,7 +54,7 @@ export default function LandingHeroSection() {
                     <DemoVideoComponent />
                 </div>
 
-                <div className=' absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-white to-transparent'></div>
+                <div className=' absolute bottom-0 left-0 w-full h-16 md:h-28 bg-gradient-to-t from-white to-transparent'></div>
             </div>
 
         </div>

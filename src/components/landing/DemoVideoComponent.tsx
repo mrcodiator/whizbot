@@ -1,47 +1,57 @@
-import React from 'react'
+"use client";
+import React, { useState } from 'react';
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
-import { Button } from '../ui/button'
-import { Play } from 'lucide-react'
-
+} from "@/components/ui/dialog";
+import { Button } from '../ui/button';
+import { Play } from 'lucide-react';
 
 const DemoVideoComponent = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    // Video details
+    const videoId = "eL8sX2FQlPA";
+    const videoTitle = "Product Demo Video";
+
     return (
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
-                <div className='bg-slate-600/80 drop-shadow-lg rounded-full p-2 animate-bounce'>
-                    <Button size={"icon"} className=' h-16 w-16 rounded-full'>
-                        <Play className='h-6 w-6 ' />
-                    </Button>
-                </div>
-            </DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Watch Demo</DialogTitle>
-                    <DialogDescription></DialogDescription>
-                </DialogHeader>
-                <iframe
-                    width="100%"
-                    height="100%"
-                    className='h-[300px] w-full rounded-lg'
-                    src="https://www.youtube.com/embed/eL8sX2FQlPA?si=pCMc_sb0vHzWRAht"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
+                <Button
+                    size="icon"
+                    className="h-20 w-20 rounded-full border-8 border-zinc-400"
+                    aria-label="Play demo video"
                 >
-                </iframe>
+                    <Play className="h-6 w-6" aria-hidden="true" />
+
+                </Button>
+            </DialogTrigger>
+            <DialogContent
+                className="max-w-lg"
+                onInteractOutside={() => setIsOpen(false)}
+                aria-labelledby="video-dialog-title"
+            >
+                <DialogHeader>
+                    <DialogTitle id="video-dialog-title">{videoTitle}</DialogTitle>
+                </DialogHeader>
+                <div className="relative aspect-video w-full">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        className="rounded-lg"
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=${isOpen ? '1' : '0'}&rel=0`}
+                        title={videoTitle}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                    />
+                </div>
             </DialogContent>
         </Dialog>
+    );
+};
 
-    )
-}
-
-export default DemoVideoComponent
+export default DemoVideoComponent;

@@ -4,10 +4,15 @@ import { Facebook, Github, Twitter } from 'lucide-react'
 import Link from 'next/link'
 
 const FooterSection = () => {
+
+    // Video details
+    const videoId = "eL8sX2FQlPA";
+    const videoTitle = "Product Demo Video";
+
     return (
         <div className='w-full pt-20 px-5'>
             <div className=' w-full rounded-2xl mx-auto bg-gradient-to-t from-transparent via-slate-300 to-secondary'>
-                <div className=' w-full'>
+                <div className=' max-w-xl mx-auto w-full'>
                     <div className='  px-5 py-20 text-center flex flex-col justify-center items-center mx-auto'>
                         <h1 className=' text-4xl tracking-tighter leading-tight font-sans font-extrabold'>
                             Join Our Community!
@@ -16,19 +21,17 @@ const FooterSection = () => {
                             We are a community of like-minded individuals who are passionate about AI.
                         </p>
 
-                        <div className=' flex items-center gap-2 max-w-lg  w-full mt-5 '>
+                        <div className="relative aspect-video w-full">
                             <iframe
                                 width="100%"
                                 height="100%"
-                                className='h-[300px] w-full rounded-lg'
-                                src="https://www.youtube.com/embed/eL8sX2FQlPA?si=pCMc_sb0vHzWRAht"
-                                title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
+                                className="rounded-lg"
+                                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                                title={videoTitle}
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                            >
-                            </iframe>
+                                loading="lazy"
+                            />
                         </div>
                     </div>
                 </div>
@@ -44,15 +47,15 @@ const FooterSection = () => {
                             </p>
 
                             <div className='flex items-center gap-2'>
-                                <Button variant={"outline"} size={"icon"}>
+                                <Button variant={"outline"} size={"icon"} aria-label="Facebook">
                                     <Facebook className='h-4 w-4' />
                                 </Button>
 
-                                <Button variant={"outline"} size={"icon"}>
+                                <Button variant={"outline"} size={"icon"} aria-label="Twitter">
                                     <Twitter className='h-4 w-4' />
                                 </Button>
 
-                                <Button variant={"outline"} size={"icon"}>
+                                <Button variant={"outline"} size={"icon"} aria-label="GitHub">
                                     <Github className='h-4 w-4' />
                                 </Button>
                             </div>
@@ -65,23 +68,23 @@ const FooterSection = () => {
                             </h1>
 
                             <div className=' flex flex-col gap-2 mt-5'>
-                                <Link href={"/"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/"} className='  hover:text-muted-foreground'>
                                     Home
                                 </Link>
 
-                                <Link href={"/pricing"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/pricing"} className='  hover:text-muted-foreground'>
                                     Pricing
                                 </Link>
-                                <Link href={"/about"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/about"} className='  hover:text-muted-foreground'>
                                     About
                                 </Link>
-                                <Link href={"/contact"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/contact"} className='  hover:text-muted-foreground'>
                                     Contact
                                 </Link>
-                                <Link href={"/terms-and-conditions"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/terms-and-conditions"} className='  hover:text-muted-foreground'>
                                     Terms and Conditions
                                 </Link>
-                                <Link href={"/privacy-policy"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/privacy-policy"} className='  hover:text-muted-foreground'>
                                     Privacy Policy
                                 </Link>
                             </div>
@@ -93,17 +96,17 @@ const FooterSection = () => {
                             </h1>
 
                             <div className=' flex flex-col gap-2 mt-5'>
-                                <Link href={"/"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/"} className='  hover:text-muted-foreground'>
                                     Lead Generation
                                 </Link>
 
-                                <Link href={"/"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/"} className='  hover:text-muted-foreground'>
                                     Sales Automation
                                 </Link>
-                                <Link href={"/"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/"} className='  hover:text-muted-foreground'>
                                     AI-Powered Chatbots
                                 </Link>
-                                <Link href={"/"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/"} className='  hover:text-muted-foreground'>
                                     CRM Integration
                                 </Link>
                             </div>
@@ -115,14 +118,14 @@ const FooterSection = () => {
                             </h1>
 
                             <div className=' flex flex-col gap-2 mt-5'>
-                                <Link href={"/team"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/team"} className='  hover:text-muted-foreground'>
                                     Our Team
                                 </Link>
 
-                                <Link href={"/careers"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/careers"} className='  hover:text-muted-foreground'>
                                     Careers
                                 </Link>
-                                <Link href={"/blog"} className=' text-muted-foreground hover:text-accent-foreground'>
+                                <Link href={"/blog"} className='  hover:text-muted-foreground'>
                                     Blog
                                 </Link>
                             </div>

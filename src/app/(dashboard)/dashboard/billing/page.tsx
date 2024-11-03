@@ -18,7 +18,7 @@ const page = async () => {
     // check subscription
     const subscription = await db.subscription.findFirst({
         where: {
-            userId: user.id
+            userId: user?.id
         }
     })
 

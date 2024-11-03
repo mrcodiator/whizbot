@@ -1,7 +1,9 @@
 import { getChatbotByDomainId } from '@/actions/chat.actions';
-import TestChatComponent from '@/components/TestChat/TestChatComponent';
 import { IDomain } from '@/types/domain.types';
+import dynamic from 'next/dynamic';
 import React from 'react'
+
+const TestChatComponent = dynamic(() => import('@/components/TestChat/TestChatComponent'), { ssr: false });
 
 const page = async ({ params }: { params: { id: string } }) => {
     const domain = await getChatbotByDomainId(params.id);

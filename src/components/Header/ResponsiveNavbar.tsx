@@ -18,7 +18,7 @@ const ResponsiveNavbar = () => {
         <div>
             <Sheet>
                 <SheetTrigger asChild>
-                    <Button size={"icon"} variant={"outline"}>
+                    <Button size={"icon"} variant={"outline"} aria-label='menu'>
                         <Menu className='h-4 w-4' />
                     </Button>
                 </SheetTrigger>
