@@ -37,16 +37,17 @@ export default function LandingHeroSection() {
             <div className=' relative max-w-7xl w-full mx-auto mt-20 rounded-2xl overflow-hidden '>
                 <div className=' p-5 bg-gradient-to-t from-transparent via-slate-400 to-secondary'>
                     <Image
-                        src="/images/ui/hero.png"
-                        alt="hero"
+                        src="/images/ui/hero-mobile.png"
+                        alt="WhizBot AI dashboard"
                         sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
-                        height={100}
-                        width={100}
-                        className=" max-w-7xl h-auto w-full rounded-lg"
+                        width={768}
+                        height={550}
+                        className="w-full h-auto rounded-lg"
                         blurDataURL="URL"
                         placeholder="blur"
-                        quality={90}
-                        priority
+                        quality={75}
+                        priority={true}
+                        loading="eager"
                     />
                 </div>
 
