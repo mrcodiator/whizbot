@@ -98,12 +98,13 @@ const UpdateDomainForm = ({ domain }: { domain: IDomain }) => {
                                         {field.value && (
                                             // <p>Prev: {field.value}</p>
                                             <Image
-                                                height={0}
-                                                width={0}
+                                                height={100}
+                                                width={100}
                                                 sizes="100vh"
                                                 src={domain.logo}
                                                 alt="logo"
                                                 className="w-16 h-16 object-cover rounded-md"
+                                                loading="lazy"
                                             />
                                         )}
                                     </div>
